@@ -1,27 +1,48 @@
 'use strict';
 
-//alert('Dobrynin');
+let money = prompt('Ваш бюджет на месяц?', '');
+let time = prompt('Введите дату в формате YYYY-MM-DD', '');
 
-//console.log(second);
-/*var leftBorderWidth = 1;
-console.log(leftBorderWidth);
-let second = 2;
-const pi = 3.14;
-let Dobr = 111;
-console.log(Dobr);
-let obj = {
-  name: 'Vladimir',
-  faml: 'Dobrynin',
-  god: '65+'
-};
-console.log(obj.god); */
-//let arr = ['computer','printer','router'];
-//console.log(arr[1]);
+let appData = {
+  budget: money,
+  timeData: time,
+  expenses: {},
+  optionalExpenses: {},
+  income: [],
+  savings: false
+}; 
+/*
+console.log("Свойства объекта appData");
+console.log(appData.budget);
+console.log(typeof(appData.budget));
+console.log(appData.timeData);
+console.log(typeof(appData.timeData));
+console.log(appData.expenses);
+console.log(typeof(appData.expenses));
+console.log(appData.optionalExpenses);
+console.log(typeof(appData.optionalExpenses));
+console.log(appData.income);
+console.log(typeof(appData.income));
+console.log(appData.savings);
+console.log(typeof(appData.savings));
+*/
 
-//alert('Dobrynin Vladimir');
-//let answer = confirm('Вам 65+ ?');
-//console.log(answer);
+let a1 = prompt('Введите обязательную статью расходов №1 в этом месяце', '');
+let s1 = prompt('Во сколько обойдется?', '');
+let a2 = prompt('Введите обязательную статью расходов №2 в этом месяце', '');
+let s2 = prompt('Во сколько обойдется?', '');
 
-let answer = prompt('Вам 65+ ?','Yes');
-console.log(answer);
-console.log(typeof(answer));
+appData.expenses.a1 = s1;
+appData.expenses.a2 = s2;
+
+//console.log(appData.expenses.a1);
+//console.log(typeof(appData.expenses.a1));
+//console.log(appData.expenses.a2);
+//console.log(typeof(appData.expenses.a2));
+
+alert((appData.budget - s1 -s2) / 30);
+
+//console.log(appData.budget / 30);
+//console.log(typeof(appData.budget / 30));
+
+
