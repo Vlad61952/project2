@@ -1,7 +1,7 @@
 'use strict';
 
-let money = prompt('Ваш бюджет на месяц?', '');
-let time = prompt('Введите дату в формате YYYY-MM-DD', '');
+let money = +prompt('Ваш бюджет на месяц?', ''),
+    time = prompt('Введите дату в формате YYYY-MM-DD', '');
 
 let appData = {
   budget: money,
@@ -11,38 +11,76 @@ let appData = {
   income: [],
   savings: false
 }; 
+
+for (let key in appData) {
+  console.log(key);
+  console.log(appData[key]);
+};
+ console.log('');
+
+
+for (let i = 0; i < 2; i++) {
+  let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
+      s = +prompt('Во сколько обойдется?', '');
+  if (typeof(a)==='string' && typeof(a) != null && typeof(s) != null && a != '' && s != '' && a.length < 50) {
+    console.log('Введены правильные данные');
+    appData.expenses[a] = s;
+  } else {
+    console.log('Неправильно!!! Повторите ввод данных.');
+    i--;
+  }
+};
+
 /*
-console.log("Свойства объекта appData");
-console.log(appData.budget);
-console.log(typeof(appData.budget));
-console.log(appData.timeData);
-console.log(typeof(appData.timeData));
-console.log(appData.expenses);
-console.log(typeof(appData.expenses));
-console.log(appData.optionalExpenses);
-console.log(typeof(appData.optionalExpenses));
-console.log(appData.income);
-console.log(typeof(appData.income));
-console.log(appData.savings);
-console.log(typeof(appData.savings));
+// используем цикл WHILE
+let i = 0;
+while (i < 2) {
+  let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
+      s = +prompt('Во сколько обойдется?', '');
+  if (typeof(a)==='string' && typeof(a) != null && typeof(s) != null && a != '' && s != '' && a.length < 50) {
+    console.log('Введены правильные данные');
+    appData.expenses[a] = s;
+  } else {
+        console.log('Неправильно!!! Повторите ввод данных.');
+        i--;
+  }
+  i++
+};
 */
 
-let a1 = prompt('Введите обязательную статью расходов №1 в этом месяце', '');
-let s1 = prompt('Во сколько обойдется?', '');
-let a2 = prompt('Введите обязательную статью расходов №2 в этом месяце', '');
-let s2 = prompt('Во сколько обойдется?', '');
+/*
+// используем цикл DO...WHILE
+let i = 0;
+do{
+  let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
+      s = +prompt('Во сколько обойдется?', '');
+  if (typeof(a)==='string' && typeof(a) != null && typeof(s) != null && a != '' && s != '' && a.length < 50) {
+    console.log('Введены правильные данные');
+    appData.expenses[a] = s;
+  } else {
+        console.log('Неправильно!!! Повторите ввод данных.');
+        i--;
+  }
+  i++
+}
+while(i < 2);
+*/
 
-appData.expenses.a1 = s1;
-appData.expenses.a2 = s2;
+appData.moneyPerDay = appData.budget / 30;
+alert("Бюджет на 1 день составляет:" + appData.moneyPerDay + "руб.");
 
-//console.log(appData.expenses.a1);
-//console.log(typeof(appData.expenses.a1));
-//console.log(appData.expenses.a2);
-//console.log(typeof(appData.expenses.a2));
+if (appData.moneyPerDay < 1000) {
+  console.log('Это минимальный уровень достатка!');
+} else if (appData.moneyPerDay > 1000 && appData.moneyPerDay < 2000) {
+  console.log('Это средний уровень достатка!');
+} else if (appData.moneyPerDay > 2000) {
+  console.log('Это высокий уровень достатка!');
+} else {
+  console.log('Произошла ошибка');
+};
 
-alert((appData.budget - s1 -s2) / 30);
-
-//console.log(appData.budget / 30);
-//console.log(typeof(appData.budget / 30));
-
+for (let key in appData) {
+  console.log(key);
+  console.log(appData[key]);
+};
 
